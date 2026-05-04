@@ -57,4 +57,34 @@ const employee1 = { role: "frontend developer", salary: 70000 };
 
 const employee = merge(person1, employee1);
 
-console.log(getProfile(employee));
+//TODO= console.log(getProfile(employee));
+
+//* Task 3
+
+type UserResponse = {
+  info?: {
+    address?: {
+      zipCode?: string;
+    };
+  };
+};
+
+const userResponse: UserResponse = {
+  info: {
+    address: {
+      zipCode: "8222",
+    },
+  },
+};
+
+const zip = userResponse?.info?.address?.zipCode ?? "00000";
+
+//TODO= console.log(zip);
+
+//* Task 4
+
+let secretValue: unknown = "Typescript is awesome";
+
+const upperValue = (secretValue as string).toUpperCase();
+
+console.log(upperValue);
