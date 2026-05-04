@@ -87,4 +87,89 @@ let secretValue: unknown = "Typescript is awesome";
 
 const upperValue = (secretValue as string).toUpperCase();
 
-console.log(upperValue);
+//TODO= console.log(upperValue);
+
+//* Task 5
+
+const textLength = <T extends { length: number }>(input: T) => {
+  return input.length;
+};
+
+const value = "Typescript is awesome";
+
+const textInput = {
+  value,
+  length: value.length,
+};
+
+//TODO= console.log(textLength(textInput));
+
+//* Task 6
+
+const product = { id: 101, name: "Keyboard", price: 50 };
+
+const getProductProp = <T, K extends keyof T>(obj: T, key: K) => {
+  return obj[key];
+};
+
+//TODO= console.log(getProductProp(product, "price"));
+
+//* Task 7
+
+const Colors = {
+  Primary: "RED",
+  Secondary: "BLUE",
+} as const;
+
+type ValidColor = (typeof Colors)[keyof typeof Colors];
+
+const setColor = (C: ValidColor) => {
+  if (C === Colors.Primary) {
+    return Colors.Primary;
+  } else {
+    return Colors.Secondary;
+  }
+};
+
+//TODO= console.log(setColor(Colors.Primary));
+
+//* Task 8
+
+interface MyDocument {
+  title: string;
+  content: string;
+  author: string;
+}
+
+type Draft<T> = {
+  readonly [P in keyof T]?: T[P]; // in use for map
+};
+
+const myDraft: Draft<MyDocument> = {
+  title: "Typescript",
+  content: "Typescript is awesome",
+};
+//TODO= console.log(myDraft);
+
+//* Task 9
+
+type DataType<T> = T extends any[] ? "Large" : "Small";
+
+type HasArray = DataType<{}>;
+
+//* Task 10
+
+interface UserAccount {
+  id: number;
+  username: string;
+  password: string;
+}
+
+type PreviewUserAccount = Omit<UserAccount, "password">;
+
+const account: PreviewUserAccount = {
+  id: 122,
+  username: "Jahirul",
+};
+
+//TODO= console.log(account);
