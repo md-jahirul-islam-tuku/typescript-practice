@@ -155,7 +155,8 @@ const myDraft: Draft<MyDocument> = {
 
 type DataType<T> = T extends any[] ? "Large" : "Small";
 
-type HasArray = DataType<{}>;
+type Test1 = DataType<string[]>;
+type Test2 = DataType<number>;
 
 //* Task 10
 
