@@ -12,7 +12,7 @@ class Person {
   getSleep(hourOfSleep: number) {
     console.log(`${this.name} ${hourOfSleep} ghonta ghumay`);
   }
-}
+} //Inheritance (উত্তরাধিকার)
 
 class Student extends Person {
   roll: number;
@@ -20,11 +20,11 @@ class Student extends Person {
     super(name, age, address);
     this.roll = roll;
   }
-}
+} //👉 student class → Person-এর সব পায়
 
 const student1 = new Student("Mr. Fakibaaz", 14, "Dhaka", 5);
 
-// student1.getSleep(12);
+//TODO= student1.getSleep(12);
 
 class Teacher extends Person {
   designation: string;
