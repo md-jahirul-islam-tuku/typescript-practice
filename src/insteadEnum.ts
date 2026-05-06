@@ -15,6 +15,6 @@ const canEdit = (role: (typeof UserRoles)[keyof typeof UserRoles]) => {
   }
 };
 
-const isEditPermissible = canEdit(UserRoles.Editor);
+const isEditPermissible = canEdit(UserRoles.Admin);
 
 console.log(isEditPermissible);
