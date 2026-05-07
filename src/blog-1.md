@@ -13,18 +13,76 @@ On the other hand, `unknown` provides flexibility while still keeping your code 
 
 ---
 
-# Understanding `any`
+## Why is `any` Called a Type Safety Hole?
 
-The `any` type tells TypeScript:
+Because it bypasses TypeScript’s safety system.
 
-> “Trust me, I know what I’m doing.”
+Problems caused by `any`:
 
-When a variable is typed as `any`, TypeScript stops checking its type.
+- No autocomplete support
+- No type checking
+- Runtime errors become common
+- Bugs become harder to detect
+- Refactoring becomes risky
 
-## Example of `any`
+### Example:
 
 ```ts
-let value: any = "Hello TypeScript";
+function processData(data: any) {
+  return data.toFixed(2);
+}
 
-value = 100;
-value.toUpperCase(); // No error during compile time
+processData("hello"); // Runtime error
+```
+
+## Why `unknown` is Safer
+
+The `unknown` type is also used for uncertain data, but unlike `any`, it forces you to verify the type before using it.
+
+### Example:
+
+```ts
+let value: unknown = "Hello";
+
+value.toUpperCase(); // Error
+```
+
+TypeScript blocks unsafe operations.
+
+You must first check the type.
+
+# Type Narrowing
+
+Type narrowing means reducing a broad type into a more specific type using checks.
+
+TypeScript uses conditions like:
+
+- typeof
+- instanceof
+- Array.isArray()
+- Custom type guards
+
+### Example:
+
+```ts
+function printLength(value: unknown) {
+  if (typeof value === "string") {
+    console.log(value.length);
+  }
+}
+
+printLength("TypeScript");
+```
+Here:
+
+- `value` starts as `unknown`
+- `typeof value === "string"` narrows it to `string`
+- Now TypeScript safely allows `.length`
+
+# Conclusion
+
+`any` may seem convenient, but it removes the protection TypeScript is built for. That is why it is called a type safety hole.
+
+`unknown` is the safer alternative because it forces developers to verify data before using it. Combined with type narrowing, it helps prevent runtime errors and keeps applications stable and maintainable.
+
+In modern TypeScript projects, choosing `unknown` over `any` is a smart step toward writing safer and more reliable code.
