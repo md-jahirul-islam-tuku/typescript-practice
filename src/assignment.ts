@@ -27,7 +27,7 @@ checkType("Hello");
 
 // Problem 4:
 
-const getProperty = <T, K extends keyof T>(obj: T, key: K):T[K] => {
+const getProperty = <T, K extends keyof T>(obj: T, key: K): T[K] => {
   return obj[key];
 };
 
@@ -53,6 +53,18 @@ function toggleReadStatus(book: Book): BookWithReadStatus {
     isRead: true,
   };
 }
+
+const myBook = {
+  title: "TypeScript Guide",
+  author: "Jane Doe",
+  publishedYear: 2024,
+};
+
+//* Sample Input:
+const result5 = toggleReadStatus(myBook);
+
+//* Output: 
+// console.log(result5);
 
 // Problem 6:
 
